@@ -30,6 +30,7 @@ public class Main extends Application {
         int b1Y = 300;
         int b2X = 400;
         int b2Y = 430;
+
         Button button1 = new Button(); //new game button
         Button button2 = new Button(); //exit button
         AnchorPane root = new AnchorPane(); //add nodes/children to this to display on main menu
