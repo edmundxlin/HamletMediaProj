@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public int resX = 1000; //resolution width
     public int resY = 1000; //resolution height
+    
+    Hamlet ham1 = new Hamlet(); //instantiates class for Hamlet's movement
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -93,6 +95,8 @@ public class Main extends Application {
         root.getChildren().add(mainTitle);
         //*******************
 
+        ham1.characterMovement(primaryStage, mainScene); //method for Hamlet's motion
+        
         primaryStage.setScene(scene);
         primaryStage.show();
 

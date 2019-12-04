@@ -1,0 +1,48 @@
+package sample;
+
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.Group;
+
+public class Hamlet {
+
+	//used for the screen coordinates of Hamlet
+	private int xCoord = 500;
+	private int yCoord = 500;
+
+	//method for character movement
+	public void characterMovement(Stage primaryStage, Scene scene)
+	{
+		//if a key is pressed down
+		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			public void handle(KeyEvent event) {
+
+				//next four are for moving up, down, left, right (WASD)
+				if (event.getCode() == KeyCode.A)
+				{
+					xCoord--;
+				}
+				if (event.getCode() == KeyCode.D)
+				{
+					xCoord++;
+				}
+				if (event.getCode() == KeyCode.S)
+				{
+					yCoord++;
+				}
+				if (event.getCode() == KeyCode.W)
+				{
+					yCoord--;
+				}
+				
+				//System.out.println(xCoord + " ---- " + yCoord);
+
+			}
+		});
+
+	}
+
+}
