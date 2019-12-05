@@ -1,18 +1,45 @@
 package sample;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public class Hamlet {
 
 	//used for the screen coordinates of Hamlet
-	private int xCoord = 500;
-	private int yCoord = 500;
+	private int xCoord = 800;
+	private int yCoord = 750;
+	
+	private int walkingSpeed = 6;
+	private int counter = 0; //animation counter, keeps track of which image is used
+	private boolean isMoving = false;
+	
+	//folder location of Hamlet sprites & list to hold them once loaded
+	private String folderName = "./Hamlet Sprites/Hamlet walking/"; 
+	private Image[] hamletList = new Image[14];
+	
+	private ImageView Hamlet_view = new ImageView();
 
+	
+	//constructor class
+	public Hamlet()
+	{
+		try {
+			loadHamlet(folderName);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	//method for character movement
 	public void characterMovement(Stage primaryStage, Scene scene)
 	{
@@ -23,26 +50,85 @@ public class Hamlet {
 				//next four are for moving up, down, left, right (WASD)
 				if (event.getCode() == KeyCode.A)
 				{
-					xCoord--;
+					xCoord-=walkingSpeed;
+					isMoving = true;
 				}
 				if (event.getCode() == KeyCode.D)
 				{
-					xCoord++;
+					xCoord+=walkingSpeed;
+					isMoving = true;
 				}
 				if (event.getCode() == KeyCode.S)
 				{
-					yCoord++;
+					yCoord+=walkingSpeed;
+					isMoving = true;
 				}
 				if (event.getCode() == KeyCode.W)
 				{
-					yCoord--;
+					yCoord-=walkingSpeed;
+					isMoving = true;
 				}
-				
-				//System.out.println(xCoord + " ---- " + yCoord);
-
 			}
 		});
-
+		
+		//stop motion if a key is released
+		scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+			public void handle(KeyEvent event) {
+				isMoving = false;
+				counter = 13;
+			}
+		});
+	}
+	
+	//loads all of Hamlet's images
+	public void loadHamlet(String folderName) throws FileNotFoundException
+	{
+		for (int i=1; i<10; i++)
+		{
+			FileInputStream file = new FileInputStream(folderName + "Frame00" + i + ".png");
+			hamletList[i-1] = new Image(file); 
+		}
+		
+		for (int i=10; i<=14; i++)
+		{
+			FileInputStream file = new FileInputStream(folderName + "Frame0" + i + ".png");
+			hamletList[i-1] = new Image(file); 
+		}
+	}
+	
+	//draws hamlet to screen
+	public void drawHamlet(Group hamletGroup)
+	{	
+		if (counter >= 14)
+		{
+			counter = 0;
+		}
+		
+		hamletGroup.getChildren().clear();
+		
+		Hamlet_view.setImage(hamletList[counter]);
+		Hamlet_view.setTranslateX(xCoord);
+		Hamlet_view.setTranslateY(yCoord);
+		
+		if (isMoving)
+		{
+			counter++;
+		}else
+		{
+			counter = 13;
+		}
+		
+		hamletGroup.getChildren().addAll(Hamlet_view);
+	}
+	
+	public int getxCoord()
+	{
+		return xCoord;
+	}
+	
+	public int getyCoord()
+	{
+		return yCoord;
 	}
 
 }
