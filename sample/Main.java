@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
@@ -14,13 +15,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.animation.AnimationTimer;
+
 
 public class Main extends Application {
     public int resX = 1000; //resolution width
     public int resY = 1000; //resolution height
     
     Hamlet ham1 = new Hamlet(); //instantiates class for Hamlet's movement
-
+	private Group hamletGroup = new Group();    //group for displaying hamlet, will be in mainGame AnchorPane
+    
     @Override
     public void start(Stage primaryStage) throws Exception{
         //Variables.
@@ -96,6 +100,23 @@ public class Main extends Application {
         //*******************
 
         ham1.characterMovement(primaryStage, mainScene); //method for Hamlet's motion
+		mainGame.getChildren().addAll(hamletGroup);
+		
+		new AnimationTimer() {
+			
+			long lastUpdate = 0;
+			
+			@Override
+			public void handle(long now) 
+			{
+				if (now - lastUpdate >= 16000000)
+				{
+					ham1.drawHamlet(hamletGroup);
+				}
+				
+				lastUpdate = now;
+			}
+		}.start();
         
         primaryStage.setScene(scene);
         primaryStage.show();
