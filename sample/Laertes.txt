@@ -1,0 +1,34 @@
+12
+H 1
+Alas, we meeteth again.
+L 1
+Noble Hamlet, has thee rememb’r’d mine own bleeding voice?
+H 2
+Ay. I doth forgive thee as thoust has’t f’r me. 
+Prithee we rest i‘th sliver of peace this hath provides us.
+L 1
+So shall we hope. Let us wander not the tormenting flames, but the sweet heavens.
+H 2
+Sooth, we art more similar less different more similar. 
+Gentle Danes of generosity, both charg’d to the vengence of our father’s unnatural passing.
+L 1
+O! What doth thous’t mean? T’was not thy father by a serpent stung?
+H 4
+Nay, how foul a death had he. Venom’d by mine uncle. 
+The vile villain who, by thee, poison’d mine chalice. 
+Withal, he hath to England bade me and, with knavish intent, 
+called for mine murder upon’t.
+L 3
+O profane murderer! What a crook’d creature! Abus’d mine appetite for vengeance, 
+for his lawless gain? T’was he the root of thy madness? 
+A caitiff, so lacking of grace and virtue! Unapt he to be king.
+H 2
+Verily. Let that incestuous satyr be confin’d to walk 
+the in the sulphur of day, his spirt forever purge his sins.
+L 1
+O Hamlet, had I known of his vile conceptions.
+H 2
+Dread not. Of his purpose thou had no wisdom. 
+He was rotten, thou art noble, Laetres. Farewell and rest you merry.
+L 1
+Farewell Hamlet.
